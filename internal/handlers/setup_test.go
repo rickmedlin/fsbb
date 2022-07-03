@@ -3,6 +3,9 @@ package handlers
 import (
 	"encoding/gob"
 	"fmt"
+	"fsbb/internal/config"
+	"fsbb/internal/models"
+	"fsbb/internal/render"
 	"html/template"
 	"log"
 	"net/http"
@@ -14,9 +17,6 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/justinas/nosurf"
-	"github.com/rickmedlin/fsbb/internal/config"
-	"github.com/rickmedlin/fsbb/internal/models"
-	"github.com/rickmedlin/fsbb/internal/render"
 )
 
 var app config.AppConfig

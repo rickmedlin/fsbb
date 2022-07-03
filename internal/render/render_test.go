@@ -1,10 +1,9 @@
 package render
 
 import (
+	"fsbb/internal/models"
 	"net/http"
 	"testing"
-
-	"github.com/rickmedlin/bandb/Internal/models"
 )
 
 func TestAddDefaultData(t *testing.T) {

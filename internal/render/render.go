@@ -4,13 +4,13 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"fsbb/internal/config"
+	"fsbb/internal/models"
 	"html/template"
 	"net/http"
 	"path/filepath"
 
 	"github.com/justinas/nosurf"
-	"github.com/rickmedlin/fsbb/internal/config"
-	"github.com/rickmedlin/fsbb/internal/models"
 )
 
 var functions = template.FuncMap{}

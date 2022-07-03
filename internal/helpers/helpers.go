@@ -2,10 +2,9 @@ package helpers
 
 import (
 	"fmt"
+	"fsbb/internal/config"
 	"net/http"
 	"runtime/debug"
-
-	"github.com/rickmedlin/fsbb/internal/config"
 )
 
 var app *config.AppConfig

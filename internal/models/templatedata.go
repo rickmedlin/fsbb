@@ -1,6 +1,6 @@
 package models
 
-import "github.com/rickmedlin/fsbb/internal/forms"
+import "fsbb/internal/forms"
 
 // TemplateData holds data sent from handlers to templates
 type TemplateData struct {

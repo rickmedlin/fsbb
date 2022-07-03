@@ -2,6 +2,8 @@ package render
 
 import (
 	"encoding/gob"
+	"fsbb/internal/config"
+	"fsbb/internal/models"
 	"log"
 	"net/http"
 	"os"
@@ -9,8 +11,6 @@ import (
 	"time"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/rickmedlin/bandb/Internal/config"
-	"github.com/rickmedlin/bandb/Internal/models"
 )
 
 var session *scs.SessionManager

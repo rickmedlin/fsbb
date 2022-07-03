@@ -3,6 +3,12 @@ package main
 import (
 	"encoding/gob"
 	"fmt"
+	"fsbb/internal/config"
+	"fsbb/internal/driver"
+	"fsbb/internal/handlers"
+	"fsbb/internal/helpers"
+	"fsbb/internal/models"
+	"fsbb/internal/render"
 	"log"
 	"net/http"
 	"os"
@@ -26,7 +32,7 @@ func main() {
 	}
 	defer db.SQL.Close()
 
-	fmt.Println(fmt.Sprintf("Staring application on port %s", portNumber))
+	fmt.Printf("Staring application on port %s", portNumber)
 
 	srv := &http.Server{
 		Addr:    portNumber,

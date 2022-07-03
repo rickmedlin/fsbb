@@ -2,9 +2,8 @@ package dbrepo
 
 import (
 	"database/sql"
-
-	"github.com/rickmedlin/fsbb/internal/config"
-	"github.com/rickmedlin/fsbb/internal/repository"
+	"fsbb/internal/config"
+	"fsbb/internal/repository"
 )
 
 type postgresDBRepo struct {
