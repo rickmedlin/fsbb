@@ -8,6 +8,7 @@ require github.com/jackc/pgtype v1.11.0 // indirect
 
 require (
 	github.com/alexedwards/scs/v2 v2.5.0
+	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
