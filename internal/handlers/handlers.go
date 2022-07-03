@@ -8,7 +8,7 @@ import (
 	"github.com/rickmedlin/fsbb/internal/config"
 	"github.com/rickmedlin/fsbb/internal/driver"
 	"github.com/rickmedlin/fsbb/internal/forms"
-
+)
 
 // Repo the repository used by the handlers
 var Repo *Repository
