@@ -1,2 +1,2 @@
-go build -o bandb.exe ./cmd/web/. || exit /b
+go build -o fsbb.exe ./cmd/web/. || exit /b
 fsbb.exe
