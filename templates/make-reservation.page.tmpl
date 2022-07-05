@@ -41,6 +41,8 @@
                         <input type="text" class="form-control" id="end_date" name="end_date" required>
                     </div>
 
+                    <input type="hidden" class="form-control" id="end_date" name="end_date" value="1">
+
                     <div class="form-group">
                         <label for="email">Email:</label>
                         {{with .Form.Errors.Get "email"}}
