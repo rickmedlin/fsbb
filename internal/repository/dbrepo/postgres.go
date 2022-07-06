@@ -48,7 +48,7 @@ func (m *postgresDBRepo) InsertRoomRestriction(r models.RoomRestriction) error {
 
 	defer cancel()
 
-	stmt := `insert into reservations (start_date, end_date, room_id, reservation_id, 
+	stmt := `insert into room_restrictions (start_date, end_date, room_id, reservation_id, 
 			created_at, updated_at, restriction_id)
 		values ($1, $2, $3, $4, $5, $6, $7)`
 
