@@ -59,6 +59,7 @@ func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
 	}
 
 	room, err := m.DB.GetRoomByID(res.RoomID)
+
 	if err != nil {
 		helpers.ServerError(w, err)
 		return
