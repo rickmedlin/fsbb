@@ -27,24 +27,14 @@
                 </p>
             </div>
         </div>
-
-
         <div class="row">
-
             <div class="col text-center">
-
                 <a id="check-availability-button" href="#!" class="btn btn-success">Check Availability</a>
-
             </div>
         </div>
-
-
-
-
     </div>
 
 {{end}}
-
 
 {{define "js"}}
 <script>
@@ -60,7 +50,6 @@
                         <div class="col">
                             <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure">
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -74,6 +63,7 @@
                 const rp = new DateRangePicker(elem, {
                     format: 'yyyy-mm-dd',
                     showOnFocus: true,
+                    minDate: new Date(),
                 })
             },
             didOpen: () => {
@@ -86,6 +76,7 @@
                 let form = document.getElementById("check-availability-form");
                 let formData = new FormData(form);
                 formData.append("csrf_token", "{{.CSRFToken}}");
+                formData.append("room_id", "1");
 
                 fetch('/search-availability-json', {
                     method: "post",
@@ -93,9 +84,11 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data);
-                        console.log(data.ok);
-                        console.log(data.message);
+                        if (data.ok) {
+                            console.log("room is availability")
+                        } else {
+                            console.log("Nope")
+                        }
                     })
             }
         });
