@@ -1,6 +1,7 @@
 package dbrepo
 
 import (
+	"errors"
 	"fsbb/internal/models"
 	"time"
 )
@@ -29,7 +30,7 @@ func (m *testDBRepo) SearchAvailabilityByDatesByRoomID(start, end time.Time, roo
 }
 
 // SearchAvailabilityforAllRooms returns a slice of available rooms for a given date range.
-func (m *testDBRepo) SearchAvailabilityforAllRooms(start, end time.Time) ([]models.Room, error) {
+func (m *testDBRepo) SearchAvailabilityForAllRooms(start, end time.Time) ([]models.Room, error) {
 
 	var rooms []models.Room
 	return rooms, nil
@@ -38,8 +39,11 @@ func (m *testDBRepo) SearchAvailabilityforAllRooms(start, end time.Time) ([]mode
 
 // GetRoomByID searches for a room by ID.
 func (m *testDBRepo) GetRoomByID(id int) (models.Room, error) {
-
 	var room models.Room
+	if id > 2 {
+		return room, errors.New("some error")
+	}
+
 	return room, nil
 
 }

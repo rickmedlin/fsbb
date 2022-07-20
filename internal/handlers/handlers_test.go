@@ -14,11 +14,6 @@ import (
 	"testing"
 )
 
-// type postData struct {
-// 	key   string
-// 	value string
-// }
-
 var theTests = []struct {
 	name               string
 	url                string
@@ -31,15 +26,6 @@ var theTests = []struct {
 	{"ms", "/majors-suite", "GET", http.StatusOK},
 	{"sa", "/search-availability", "GET", http.StatusOK},
 	{"contact", "/contact", "GET", http.StatusOK},
-
-	// {"post-search-avail", "/search-availability", "POST", []postData{
-	// 	{key: "start", value: "2020-01-01"},
-	// 	{key: "end", value: "2020-01-02"},
-	// }, http.StatusOK},
-	// {"post-search-avail-json", "/search-availability-json", "POST", []postData{
-	// 	{key: "start", value: "2020-01-01"},
-	// 	{key: "end", value: "2020-01-02"},
-	// }, http.StatusOK},
 }
 
 func TestHandlers(t *testing.T) {
