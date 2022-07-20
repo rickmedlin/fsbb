@@ -29,7 +29,7 @@ func (m *testDBRepo) SearchAvailabilityByDatesByRoomID(start, end time.Time, roo
 
 }
 
-// SearchAvailabilityforAllRooms returns a slice of available rooms for a given date range.
+// SearchAvailabilityForAllRooms returns a slice of available rooms for a given date range.
 func (m *testDBRepo) SearchAvailabilityForAllRooms(start, end time.Time) ([]models.Room, error) {
 
 	var rooms []models.Room
