@@ -11,6 +11,7 @@ import (
 	"fsbb/internal/render"
 	"log"
 	"net/http"
+	"net/smtp"
 	"os"
 	"time"
 
@@ -31,6 +32,13 @@ func main() {
 		log.Fatal(err)
 	}
 	defer db.SQL.Close()
+
+	from := "me@here.com"
+	auth := smtp.PlainAuth("", from, "", "localhost")
+	err = smtp.SendMail("localhost:1025", auth, from, []string{"you@there.com"}, []byte("Jonesy says hi"))
+	if err != nil {
+		log.Println(err)
+	}
 
 	fmt.Printf("Starting application on port %s", portNumber)
 
