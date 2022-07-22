@@ -2,7 +2,10 @@ module fsbb
 
 go 1.18
 
-require github.com/jackc/pgconn v1.12.1
+require (
+	github.com/jackc/pgconn v1.12.1
+	github.com/xhit/go-simple-mail v2.2.2+incompatible
+)
 
 require github.com/jackc/pgtype v1.11.0 // indirect
 
