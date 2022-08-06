@@ -26,11 +26,14 @@
         {{range $res}}
             <tr>
                 <td>{{.ID}}</td>
-                <td>{{.LastName}}</td>
+                <td>
+                    <a href="/admin/reservations/all{{.ID}}">
+                        {{.LastName}}</td>
+                    </a>
                 <td>{{.FirstName}}</td>
                 <td>{{.Room.RoomName}}</td>
-                <td>{{.StartDate}}</td>
-                <td>{{.EndDate}}</td>
+                <td>{{humanDate .StartDate}}</td>
+                <td>{{humanDate .EndDate}}</td>
             </tr>
         {{end}}
                 </tbody>
@@ -41,9 +44,12 @@
 {{define "js"}}
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
     <script>
-        const dataTable = new simpleDatatables.DataTable("#all-res", {
-            searchable: true,
-            fixedHeight: true,
+        document.addEventListener("DOMContentLoaded", function(){
+            const dataTable = new simpleDatatables.DataTable("#all-res", {
+                searchable: true,
+                fixedHeight: true,
+                select: 3, "desc",
+            })
         })
     </script>
 {{end}}
