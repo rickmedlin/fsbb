@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"fsbb/internal/models"
-	"io/ioutil"
 	"log"
+	"os"
 	"strings"
 	"time"
 
@@ -39,7 +39,7 @@ func sendMessage(m models.MailData) {
 	if m.Template == "" {
 		email.SetBody(mail.TextHTML, string(m.Content))
 	} else {
-		data, err := ioutil.ReadFile(fmt.Sprintf("./email-templates/%s", m.Template))
+		data, err := os.ReadFile(fmt.Sprintf("./email-templates/%s", m.Template))
 		if err != nil {
 			app.ErrorLog.Println(err)
 			return
