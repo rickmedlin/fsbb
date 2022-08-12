@@ -401,17 +401,7 @@ func (m *Repository) ReservationSummary(w http.ResponseWriter, r *http.Request) 
 
 // ChooseRoom displays list of available rooms
 func (m *Repository) ChooseRoom(w http.ResponseWriter, r *http.Request) {
-	// used to have next 6 lines
-	//roomID, err := strconv.Atoi(chi.URLParam(r, "id"))
-	//if err != nil {
-	//	log.Println(err)
-	//	m.App.Session.Put(r.Context(), "error", "missing url parameter")
-	//	http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
-	//	return
-	//}
 
-	// changed to this, so we can test it more easily
-	// split the URL up by /, and grab the 3rd element
 	exploded := strings.Split(r.RequestURI, "/")
 	roomID, err := strconv.Atoi(exploded[2])
 	if err != nil {
@@ -583,6 +573,51 @@ func (m *Repository) AdminShowReservation(w http.ResponseWriter, r *http.Request
 		Data:      data,
 		Form:      forms.New(nil),
 	})
+}
+
+// AdminPostShowReservation posts the reservation in the admin dashboard.
+func (m *Repository) AdminPostShowReservation(w http.ResponseWriter, r *http.Request) {
+
+	err := r.ParseForm()
+	if err != nil {
+		helpers.ServerError(w, err)
+		return
+	}
+
+	exploded := strings.Split(r.RequestURI, "/")
+	id, err := strconv.Atoi(exploded[4])
+
+	if err != nil {
+		helpers.ServerError(w, err)
+	}
+
+	src := exploded[3]
+
+	stringMap := make(map[string]string)
+	stringMap["src"] = src
+
+	res, err := m.DB.GetReservationByID(id)
+
+	if err != nil {
+		helpers.ServerError(w, err)
+		return
+	}
+
+	res.FirstName = r.Form.Get("first_name")
+	res.LastName = r.Form.Get("last_name")
+	res.Email = r.Form.Get("email")
+	res.Phone = r.Form.Get("phone")
+
+	err = m.DB.UpdateReservation(res)
+
+	if err != nil {
+		helpers.ServerError(w, err)
+		return
+	}
+
+	m.App.Session.Put(r.Context(), "flash", "Changes Saved")
+	http.Redirect(w, r, fmt.Sprintf("/admin/reservations-%s", src), http.StatusSeeOther)
+
 }
 
 // AdminReservationsCalendar displays reservations in a calendar format.
