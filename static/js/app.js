@@ -1,4 +1,4 @@
-// Prompt is the JavaScript module for all alerts, notifications, and custop popup dialogs.
+// Prompt is the JavaScript module for all alerts, notifications, and custom popup dialogs.
 function Prompt() {
     let toast = function (c) {
         const {
