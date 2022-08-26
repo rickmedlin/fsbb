@@ -794,7 +794,7 @@ func (m *Repository) AdminPostReservationsCalendar(w http.ResponseWriter, r *htt
 	year, _ := strconv.Atoi(r.Form.Get("y"))
 	month, _ := strconv.Atoi(r.Form.Get("m"))
 
-	// process blocks
+	// Process blocks
 	rooms, err := m.DB.AllRooms()
 	if err != nil {
 		helpers.ServerError(w, err)
@@ -805,7 +805,8 @@ func (m *Repository) AdminPostReservationsCalendar(w http.ResponseWriter, r *htt
 
 	for _, room := range rooms {
 		// Get the block map from the session. Loop through entire map and if we have an entry in the map
-		// that does not exist in our posted data and the restriction id > 0, then it is a block we need to remove
+		// that does not exist in our posted data and the restriction id > 0, then it is a block we need
+		// to remove
 		currMap := m.App.Session.Get(r.Context(), fmt.Sprintf("block_map_%d", room.ID)).(map[string]int)
 		for name, value := range currMap {
 			// ok will be false if the value is not in the map
